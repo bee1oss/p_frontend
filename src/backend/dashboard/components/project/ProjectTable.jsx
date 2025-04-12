@@ -1,31 +1,38 @@
 import React from 'react'
 import './Table.css'
 import Button from '../button/AButton'
+import Table from '../table/Table'
+import THead from '../table/THead'
+import TableTr from '../table/TableTr'
+import TableTh from '../table/TableTh'
+import TBody from '../table/TBody'
+import TableTd from '../table/TableTd'
+
+
 
 function ProjectTable() {
   return (
-<table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Project Title</th>
-          <th>Description</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Portfolio Website</td>
-          <td>A personal site to showcase my skills and projects.</td>
-          <td>
+    <Table>
+      <THead>
+        <TableTr>
+          <TableTh>#</TableTh>
+          <TableTh>Project Title</TableTh>
+          <TableTh>Description</TableTh>
+          <TableTh>Actions</TableTh>
+        </TableTr>
+      </THead>
+      <TBody>
+        <TableTr>
+          <TableTd>1</TableTd>
+          <TableTd>Portfolio Website</TableTd>
+          <TableTd>A personal site to showcase my skills and projects.</TableTd>
+          <TableTd>
             <Button name="Edit" className="button" />
             <Button name="Delete" className="button" />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
+          </TableTd>
+        </TableTr>
+      </TBody>
+    </Table>
   )
 }
 
