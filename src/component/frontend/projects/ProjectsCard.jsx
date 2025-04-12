@@ -2,7 +2,7 @@ import React from 'react'
 
 function ProjectsCard(props) {
   return (
-    <div class="card">
+    <div className="card">
         <h3>{props.title}</h3>
         <p><strong>Technologies:</strong>{props.technologies}</p>
         <p>{props.description}</p>

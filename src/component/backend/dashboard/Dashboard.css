@@ -1,0 +1,70 @@
+  .sidebar {
+    width: 200px;
+    height: 100vh;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+  }
+  .sidebar h2 {
+    margin-bottom: 30px;
+  }
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+    transition: 0.3s;
+  }
+  .sidebar a:hover {
+    color: #4a90e2;
+  }
+
+  .main {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  .header {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .form-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    max-width: 600px;
+  }
+
+  label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background: #357bd8;
+  }

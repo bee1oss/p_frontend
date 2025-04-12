@@ -10,7 +10,7 @@ import Footer from './Footer'
 
 function Home() {
   return (
-    <body>
+    <div>
       <Header />
       <NavbarMain />
       <AboutMe />
@@ -19,7 +19,7 @@ function Home() {
       <ProjectsMain />
       <Contact />
       <Footer />
-    </body>
+    </div>
   )
 }
 
