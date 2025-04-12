@@ -4,7 +4,7 @@ import AddprojectForm from '../dashboard/components/project/AddprojectForm.jsx'
 
 function Addproject() {
   return (
-    <div className="form-card">
+    <div>
         <AddprojectForm />
     </div>
   )

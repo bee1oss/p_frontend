@@ -2,9 +2,11 @@ import React from 'react'
 
 function Form(props) {
   return (
-    <form>
-        {props.children}
-    </form>
+    <div className='form-card'>
+      <form>
+          {props.children}
+      </form>
+    </div>
   )
 }
 

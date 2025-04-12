@@ -14,6 +14,10 @@ function Contact() {
         <input type="email" id="email" required />
       </div>
       <div className="form-group">
+        <label htmlFor="subject">Subject</label>
+        <input type="subject" id="subject" required />
+      </div>
+      <div className="form-group">
         <label htmlFor="message">Message</label>
         <textarea id="message" required></textarea>
       </div>

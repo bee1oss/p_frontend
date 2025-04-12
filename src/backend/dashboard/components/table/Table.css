@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+  }
+
+  th {
+    background: #f0f2f5;
+  }
+
+  tr:hover {
+    background: #f9f9f9;
+  }
+
