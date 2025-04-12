@@ -1,5 +1,5 @@
 // components/layouts/DashboardLayout.js
-import Sidebar from '../components/sidebar/SidebarMain'; // kendi sidebar yolun neyse
+import Sidebar from '../components/sidebar/SidebarMain.jsx'; // kendi sidebar yolun neyse
 import { Outlet } from 'react-router-dom';
 
 const DashboardLayout = () => {

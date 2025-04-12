@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from './SidebarLinks'
+import Sidebar from './SidebarLinks.jsx'
 
 function SidebarMain() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import SkilCard from './SkilCard'
+import SkilCard from './SkilCard.jsx'
 
 function SkillMain() {
   return (

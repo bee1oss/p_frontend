@@ -1,5 +1,5 @@
 import React from 'react'
-import NavbarLinks from './NavbarLinks'
+import NavbarLinks from './NavbarLinks.jsx'
 
 function NavbarMain() {
   return (
