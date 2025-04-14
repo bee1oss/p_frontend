@@ -1,20 +1,15 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../../../redux/slices/auth'; // Gerekli redux action'ı import et
+import { fetchLogout } from '../../../../redux/slices/Auth'; // Gerekli redux action'ı import et
 
 function Sidebar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onClickLogout = () => {
-    if (window.confirm("Are you sure you want to logout?")) {
-      // Redux state'den çıkış yap
-      dispatch(logout()); // State'i sıfırlama
-
-      // Yönlendirmeyi yap
-      navigate("/login"); // Çıkış yapıldıktan sonra yönlendir
-    }
+  const onClickLogout = async () => {
+    await dispatch(fetchLogout());
+    navigate("/login");
   };
 
   return (

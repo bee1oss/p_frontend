@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { fetchAuth, selectIsAuth } from '../../../../redux/slices/auth';
+import { fetchAuth, selectIsAuth } from '../../../../redux/slices/Auth';
 import { useForm } from "react-hook-form"; // Eklendi
 import './Login.css';
 

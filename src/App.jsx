@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAuthMe, selectIsAuth } from './redux/slices/auth';
+import { selectIsAuth,fetchAuthMe } from './redux/slices/Auth';
 import { Navigate } from 'react-router-dom';
 
 import Home from './frontend/Home';
@@ -14,18 +14,15 @@ import AddLanguages from './backend/pages/AddLanguages';
 import EditAbout from './backend/pages/EditAbout';
 import Messages from './backend/pages/Messages';
 import ReadMessage from './backend/dashboard/components/editContact/ReadMessage';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function App() {
-  const dispatch = useDispatch();
+  
   const isAuth = useSelector(selectIsAuth);
-
-  React.useEffect(() => {
-    if (!isAuth) {
-      // Çıkış yapıldığında yönlendirme
-      <Navigate to="/login" />;
-    }
-  }, [isAuth]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAuthMe()); // Eğer token varsa kullanıcı verisini tekrar getir
+  }, [dispatch]);
 
   const adminRoute = (component) => {
     return isAuth ? component : <Navigate to="/login" />;

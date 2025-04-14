@@ -13,6 +13,10 @@ export const fetchAuthMe = createAsyncThunk("auth/fetchAuthMe", async () => {
   return data; // Kullanıcı verisi
 });
 
+export const fetchLogout = createAsyncThunk("auth/fetchLogout", async () => {
+  await axios.post("/auth/logout"); // sunucu tarafında token'ı temizle
+});
+
 export const fetchRegister = createAsyncThunk(
   "auth/fetchRegister",
   async (params) => {
@@ -75,8 +79,13 @@ const authSlice = createSlice({
       .addCase(fetchRegister.rejected, (state) => {
         state.status = "error";
         state.data = null;
+      })
+      .addCase(fetchLogout.fulfilled, (state) => {
+        state.data = null; // State temizlenir
+        Cookies.remove("token"); // Localdeki cookie de silinir
       });
   },
+  
 });
 
 // Reducer export'u
