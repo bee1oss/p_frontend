@@ -1,5 +1,5 @@
 import React from 'react'
-import MessagesTable from '../dashboard/components/editContact/MessagesTable'
+import MessagesTable from '../layouts/contact/MessagesTable'
 
 
 

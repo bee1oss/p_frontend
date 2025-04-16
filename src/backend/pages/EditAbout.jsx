@@ -1,5 +1,5 @@
 import React from 'react'
-import AddAboutMeForm from '../dashboard/components/editabout/AddAboutMeForm'
+import AddAboutMeForm from '../layouts/about/AddAboutMeForm'
 
 function EditAbout() {
   return (

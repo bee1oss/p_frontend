@@ -1,6 +1,6 @@
 import React from 'react'
-import Login from '../dashboard/components/login/Login.jsx'
-import '../dashboard/components/login/Login.css'
+import Login from '../layouts/login/Login.jsx'
+import '../../styles/login.css'
 
 function LoginPage() {
   return (

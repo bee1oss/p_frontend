@@ -1,5 +1,5 @@
 import React from 'react'
-import AddprojectForm from '../dashboard/components/project/AddprojectForm.jsx'
+import AddprojectForm from '../../components/project/AddprojectForm.jsx'
 
 
 function Addproject() {

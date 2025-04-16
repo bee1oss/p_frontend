@@ -1,5 +1,5 @@
 import React from 'react'
-import ProjectTable from '../dashboard/components/project/ProjectTable.jsx'
+import ProjectTable from '../layouts/project/ProjectTable.jsx'
 
 function ProjectList() {
   return (
