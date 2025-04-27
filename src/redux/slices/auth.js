@@ -17,13 +17,6 @@ export const fetchLogout = createAsyncThunk("auth/fetchLogout", async () => {
   await axios.post("/auth/logout"); // sunucu tarafında token'ı temizle
 });
 
-export const fetchRegister = createAsyncThunk(
-  "auth/fetchRegister",
-  async (params) => {
-    const { data } = await axios.post("/auth/register", params); // Kayıt işlemi
-    return data; // Backend'den gelen kullanıcı verisi
-  }
-);
 
 // Initial state (Başlangıç durumu)
 const initialState = {
@@ -64,21 +57,10 @@ const authSlice = createSlice({
         state.status = "loaded";
         state.data = action.payload;
       })
-      .addCase(fetchAuthMe.rejected, (state) => {
+      .addCase(fetchAuthMe.rejected, (state, action) => {
         state.status = "error";
         state.data = null;
-      })
-      .addCase(fetchRegister.pending, (state) => {
-        state.status = "loading";
-        state.data = null;
-      })
-      .addCase(fetchRegister.fulfilled, (state, action) => {
-        state.data = action.payload;
-        state.status = "loaded";
-      })
-      .addCase(fetchRegister.rejected, (state) => {
-        state.status = "error";
-        state.data = null;
+        console.log('Fetch error:', action.payload); // Hata mesajını console'a yazdır
       })
       .addCase(fetchLogout.fulfilled, (state) => {
         state.data = null; // State temizlenir

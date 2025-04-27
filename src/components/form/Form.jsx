@@ -2,7 +2,7 @@ import React from 'react';
 
 function Form({ onSubmit, className = '', children }) {
   return (
-    <div className={`form-card ${className}`}>
+    <div className={` ${className}`}>
       <form onSubmit={onSubmit}>
         {children}
       </form>

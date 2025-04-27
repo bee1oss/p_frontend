@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import Label from '../../../components/label/Label'
 import Input from '../../../components/input/Input'
-import Button from '../../../components/button/Button'
+
 import Form from '../../../components/form/Form'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -41,7 +41,7 @@ function AddSkillForm() {
   }
   
   return (
-      <Form onSubmit={handleSubmit}>
+      <Form className='form-card' onSubmit={handleSubmit}>
         <Label htmlFor="techtitle" name="Technology Title" />
         <Input type="text"
         id="title"
@@ -59,7 +59,7 @@ function AddSkillForm() {
         placeholder="Technologies"
         onChange={(e) => setDescription(e.target.value)}
         required />
-
+        
         <button type="submit">{location.state ? 'Update' : 'Add'} About Me</button>
       </Form>
   )

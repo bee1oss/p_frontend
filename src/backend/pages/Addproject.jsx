@@ -1,5 +1,6 @@
 import React from 'react'
-import AddprojectForm from '../../components/project/AddprojectForm.jsx'
+import AddprojectForm from '../layouts/project/AddprojectForm'
+
 
 
 function Addproject() {

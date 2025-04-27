@@ -1,42 +1,44 @@
 import React from 'react'
 import '../../../styles/Table.css'
 import Button from '../../../components/button/AButton'
-import Table from '../../../components/table/Table'
-import THead from '../../../components/table/THead'
 import TableTr from '../../../components/table/TableTr'
-import TableTh from '../../../components/table/TableTh'
 import TBody from '../../../components/table/TBody'
 import TableTd from '../../../components/table/TableTd'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { fetchRemoveEdu } from '../../../redux/slices/Education'
 
 
 
-function EducationTable() {
+function EducationTable(props) {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleDelete = () => {
+    console.log("Silme ID:", props.id);  // id'yi kontrol et
+    if (window.confirm("Silmek istediğinize emin misiniz?")) {
+      dispatch(fetchRemoveEdu(props.id))
+    }
+  }
+
+  const handleEdit = () => {
+    // "Edit" butonuna basıldığında AddAboutMeForm sayfasına yönlendiriyoruz
+    navigate('/dashboard/addeducation', { state: { id: props.id, university: props.university, faculity: props.faculity, departmen: props.departmen, graduated: props.graduated } });
+  }
+
   return (
-    <Table>
-      <THead>
-        <TableTr>
-          <TableTh>#</TableTh>
-          <TableTh>Name</TableTh>
-          <TableTh>Faculty</TableTh>
-          <TableTh>Department graduated</TableTh>
-          <TableTh>Graduated Date</TableTh>
-          <TableTh>Actions</TableTh>
-        </TableTr>
-      </THead>
       <TBody>
         <TableTr>
-          <TableTd>1</TableTd>
-          <TableTd>Belarusian State University</TableTd>
-          <TableTd>Faculty of Radiophysics and Computer Technologies</TableTd>
-          <TableTd>Bachelor in Computer Security</TableTd>
-          <TableTd>2024</TableTd>
+          <TableTd>{props.university}</TableTd>
+          <TableTd>{props.faculity}</TableTd>
+          <TableTd>{props.departmen}</TableTd>
+          <TableTd>{props.graduated}</TableTd>
           <TableTd>
-            <Button link="#deneme" name="Edit" className="button" />
-            <Button link="#deneme" name="Delete" className="button" />
+            <Button name="Edit" className="button" onClick={handleEdit} />
+            <Button name="Delete" className="button" onClick={handleDelete}/>
           </TableTd>
         </TableTr>
       </TBody>
-    </Table>
   )
 }
 

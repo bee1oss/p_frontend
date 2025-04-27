@@ -20,7 +20,9 @@ function SkillsTable(props) {
   const handleDelete = () => {
     console.log("Silme ID:", props.id);  // id'yi kontrol et
     if (window.confirm("Silmek istediğinize emin misiniz?")) {
-      dispatch(fetchRemoveSkill(props.id))
+      dispatch(fetchRemoveSkill(props.id)).then(() => {
+        dispatch(fetchSkills());
+      });      
     }
   }
   
@@ -29,13 +31,6 @@ function SkillsTable(props) {
     navigate('/dashboard/addskills', { state: { id: props.id, title: props.title, description: props.description } });
   }
   return (
-    <Table>
-      <THead>
-        <TableTr>
-          <TableTh>Technology Title</TableTh>
-          <TableTh>Technologies</TableTh>
-        </TableTr>
-      </THead>
       <TBody>
         <TableTr>
           <TableTd>{props.title}</TableTd>
@@ -46,7 +41,6 @@ function SkillsTable(props) {
           </TableTd>
         </TableTr>
       </TBody>
-    </Table>
   )
 }
 

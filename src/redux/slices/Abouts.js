@@ -6,13 +6,13 @@ export const fetchAbouts = createAsyncThunk("about/fetchAbouts", async () => {
   const { data } = await axios.get("/abouts/getAll");
   return data;
 });
+  
 
 // About silme işlemi
 export const fetchRemoveAbout = createAsyncThunk(
   "about/fetchRemoveAbout",
-  async (id) => {
-    const { data } = await axios.delete(`/abouts/del/${id}`);
-    return data; // sadece temiz veri döner
+  async (id) => { await axios.delete(`/abouts/del/${id}`);
+    return id; // sadece temiz veri döner
   }
 );
 

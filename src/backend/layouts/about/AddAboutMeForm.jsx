@@ -40,7 +40,7 @@ function AddAboutMeForm() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className='form-card' onSubmit={handleSubmit}>
       <Label htmlFor="aboutmeTitle" name="About Me Title" />
       <Input
         type="text"

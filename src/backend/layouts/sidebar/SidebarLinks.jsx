@@ -19,8 +19,8 @@ function Sidebar() {
       <Link to="/dashboard/addproject" className="logo">Add Project</Link>
       <Link to="/dashboard/addskills" className="logo">Add Langs & Techs</Link>
       <Link to="/dashboard/addeducation" className="logo">Add Education</Link>
-      <Link to="/dashboard/editabout" className="logo">Edit About</Link>
-      <Link to="/dashboard/editcontact" className="logo">Edit Contact</Link>
+      <Link to="/dashboard/addabout" className="logo">Add About</Link>
+      <Link to="/dashboard/messages" className="logo">Messages</Link>
       <Link to="/dashboard/message/1" className="logo"></Link>
       <Link to="/login" className="logo" onClick={onClickLogout}>Logout</Link>
     </div>

@@ -26,9 +26,8 @@ export const fetchUpdateSkill = createAsyncThunk(
 
 export const fetchRemoveSkill = createAsyncThunk(
     "skills/fetchRemoveSkill",
-    async (id) => {
-        const { data } = await axios.delete(`/skills/del/${id}`);
-        return data; // sadece temiz veri döner
+    async (id) => { await axios.delete(`/skills/del/${id}`);
+        return id; // sadece temiz veri döner
     }
 );
 
@@ -60,9 +59,8 @@ const skillsSlice = createSlice({
           })
           // Silme işleminde: veriyi güncelledikten sonra state'i düzenle
           .addCase(fetchRemoveSkill.fulfilled, (state, action) => {
-            const removedId = action.meta.arg; // dispatch sırasında gönderdiğin id
             state.skills.items = state.skills.items.filter(
-              (obj) => obj._id !== removedId // silinen objeyi filter ile kaldır
+              (obj) => obj._id !== action.payload
             );
           })
           // Silme işlemi pending durumu, frontend'de herhangi bir etki yaratmamalı

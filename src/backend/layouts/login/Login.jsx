@@ -17,7 +17,6 @@ function Login() {
 
   const onSubmit = async (values) => { // Düzeltildi
     const data = await dispatch(fetchAuth(values));
-    console.log(values)
     if (!data.payload) {
       alert("Giriş başarısız!");
     }

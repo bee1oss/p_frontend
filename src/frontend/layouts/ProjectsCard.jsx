@@ -1,12 +1,20 @@
 import React from 'react'
 
-function ProjectsCard(props) {
+function ProjectsCard({ name, techs, description, github }) {
+
+  const isGithubValid = typeof github === 'string' && github.trim() !== '';
   return (
     <div className="card">
-        <h3>{props.title}</h3>
-        <p><strong>Technologies:</strong>{props.technologies}</p>
-        <p>{props.description}</p>
-        <a href={props.github} target="_blank">🔗 View on GitHub</a>
+        <h3>{name}</h3>
+        <p><strong>Technologies:</strong>{techs}</p>
+        <p>{description}</p>
+        {isGithubValid ? (
+          <a href={github}>🔗 View on GitHub</a>
+        ):(
+          <a>Github Link ❌</a> 
+        )
+          }
+        
     </div>
   )
 }

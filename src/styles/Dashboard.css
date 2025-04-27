@@ -1,76 +1,101 @@
-  .sidebar {
-    width: 200px;
-    height: 100vh;
-    background: #2c3e50;
-    color: white;
-    padding: 20px;
-  }
-  .sidebar h2 {
-    margin-bottom: 30px;
-  }
-  .sidebar a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    margin: 10px 0;
-    transition: 0.3s;
-  }
-  .sidebar a:hover {
-    color: #4a90e2;
-  }
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: #2c3e50;
+  color: white;
+  padding: 25px 20px;
+  font-size: 18px;
+  z-index: 1000;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+}
 
-  .main {
-    flex-grow: 1;
-    padding: 20px;
-  }
-  .header {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
+.sidebar h2 {
+  margin-bottom: 30px;
+  font-size: 22px;
+}
 
-  .form-card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    max-width: 600px;
-  }
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin: 15px 0;
+  transition: 0.3s;
+  font-size: 18px;
+}
 
-  label {
-    display: block;
-    margin: 15px 0 5px;
-    font-weight: bold;
-  }
+.sidebar a:hover {
+  color: #4a90e2;
+  font-weight: bold;
+}
 
-  input[type="text"],
-  textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    resize: vertical;
-  }
+.main {
+  margin-left: 220px; /* sidebar genişliği kadar */
+  padding: 30px;
+  font-size: 18px;
+}
 
-  button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-  }
+.header {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  font-size: 20px;
+}
 
-  button:hover {
-    background: #357bd8;
-  }
+.form-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  max-width: 650px;
+  font-size: 18px;
+}
 
-  .dashboard-h2{
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  
+label {
+  display: block;
+  margin: 20px 0 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 24px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+button:hover {
+  background: #357bd8;
+}
+.main {
+  margin-left: 220px; /* Bu değeri .sidebar genişliğiyle aynı tut */
+  padding: 30px;
+  font-size: 18px;
+  position: relative;
+  z-index: 1;
+}
+.dashboard-h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 24px;
+}

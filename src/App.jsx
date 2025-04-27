@@ -8,20 +8,26 @@ import Home from './frontend/pages/Home';
 import DashboardMain from './backend/pages/dashboard/DashboardMain';
 import DashboardLayout from './backend/layouts/DashboardLayout'; // az önce yazdığımız layout
 import LoginPage from './backend/pages/LoginPage';
-import Addproject from './backend/layouts/project/AddprojectForm';
+
 import AddEducation from './backend/layouts/education/AddEducationForm';
 import AddSkill from './backend/pages/AddSkills';
 import EditAbout from './backend/pages/EditAbout';
 import Messages from './backend/pages/Messages';
 import ReadMessage from './backend/layouts/contact/ReadMessage';
+import Cookies from 'js-cookie';
 import React, { useEffect } from 'react';
+import Addproject from './backend/pages/Addproject';
 
 function App() {
   
   const isAuth = useSelector(selectIsAuth);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchAuthMe()); // Eğer token varsa kullanıcı verisini tekrar getir
+    const token = Cookies.get("token");
+
+    if (token) {
+      dispatch(fetchAuthMe());
+    }
   }, [dispatch]);
 
   const adminRoute = (component) => {
@@ -40,9 +46,9 @@ function App() {
           <Route path="addproject" element={adminRoute(<Addproject />)} />
           <Route path="addskills" element={adminRoute(<AddSkill />)} />
           <Route path="addeducation" element={adminRoute(<AddEducation />)} />
-          <Route path="editabout" element={adminRoute(<EditAbout />)} />
-          <Route path="editcontact" element={adminRoute(<Messages />)} />
-          <Route path="message/1" element={adminRoute(<ReadMessage />)} />
+          <Route path="addabout" element={adminRoute(<EditAbout />)} />
+          <Route path="messages" element={adminRoute(<Messages />)} />
+          <Route path="messages/:id" element={adminRoute(<ReadMessage />)} />
           {/* Diğer dashboard alt sayfalar */}
           {/* <Route path="users" element={<UserList />} /> */}
         </Route>

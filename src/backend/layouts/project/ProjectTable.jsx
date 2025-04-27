@@ -7,32 +7,39 @@ import TableTr from '../../../components/table/TableTr'
 import TableTh from '../../../components/table/TableTh'
 import TBody from '../../../components/table/TBody'
 import TableTd from '../../../components/table/TableTd'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { fetchRemoveProject } from '../../../redux/slices/Projects'
 
 
+function ProjectTable(props) {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  
+  const handleDelete = () => {
+    console.log("Silme ID:", props.id);  // id'yi kontrol et
+    if (window.confirm("Silmek istediğinize emin misiniz?")) {
+      dispatch(fetchRemoveProject(props.id))
+    }
+  }
+  const handleEdit = () => {
+    // "Edit" butonuna basıldığında AddAboutMeForm sayfasına yönlendiriyoruz
+    navigate('/dashboard/addproject', { state: { id: props.id, name: props.name, techs: props.techs, description: props.description } });
+  }
 
-function ProjectTable() {
   return (
-    <Table>
-      <THead>
-        <TableTr>
-          <TableTh>#</TableTh>
-          <TableTh>Project Title</TableTh>
-          <TableTh>Description</TableTh>
-          <TableTh>Actions</TableTh>
-        </TableTr>
-      </THead>
       <TBody>
         <TableTr>
-          <TableTd>1</TableTd>
-          <TableTd>Portfolio Website</TableTd>
-          <TableTd>A personal site to showcase my skills and projects.</TableTd>
+          <TableTd>{props.name}</TableTd>
+          <TableTd>{props.techs}</TableTd>
+          <TableTd>{props.description}</TableTd>
+          <TableTd>{props.github}</TableTd>
           <TableTd>
-            <Button name="Edit" className="button" />
-            <Button name="Delete" className="button" />
+            <Button name="Edit" className="button" onClick={handleEdit} />
+            <Button name="Delete" className="button" onClick={handleDelete} />
           </TableTd>
         </TableTr>
       </TBody>
-    </Table>
   )
 }
 

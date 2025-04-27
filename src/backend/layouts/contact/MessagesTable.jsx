@@ -1,72 +1,50 @@
 import React from 'react';
 import '../../../styles/Table.css';
 import Button from '../../../components/button/AButton';
-import Table from '../../../components/table/Table';
-import THead from '../../../components/table/THead';
 import TableTr from '../../../components/table/TableTr';
-import TableTh from '../../../components/table/TableTh';
 import TBody from '../../../components/table/TBody';
 import TableTd from '../../../components/table/TableTd';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchReadContact, fetchRemoveContact } from '../../../redux/slices/Contact';
+import { FaCheckCircle } from "react-icons/fa"; // ✅ ikon
 
-function MessagesTable() {
+
+function MessagesTable(props) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+  const handleDelete = () => {
+    if (window.confirm("Silmek istediğinize emin misiniz?")) {
+          dispatch(fetchRemoveContact(props.id))
+    }
+  }
 
-  const messages = [
-    {
-      id: 1,
-      name: 'John Doe',
-      email: 'john@example.com',
-      subject: 'Interested in your portfolio',
-    },
-    {
-      id: 2,
-      name: 'Jane Smith',
-      email: 'jane@example.com',
-      subject: 'Request for collaboration',
-    },
-  ];
-
-  const handleView = (id) => {
-    navigate(`/dashboard/messages/${id}`);
+  const handleView = async () => {
+    try {
+      await dispatch(fetchReadContact(props.id)); // sadece ID gönderiyoruz
+      navigate(`/dashboard/messages/${props.id}`);
+    } catch (error) {
+      console.error("Okundu olarak işaretlenirken hata:", error);
+    }
   };
 
   return (
-    <Table>
-      <THead>
-        <TableTr>
-          <TableTh>#</TableTh>
-          <TableTh>Name</TableTh>
-          <TableTh>Email</TableTh>
-          <TableTh>Subject</TableTh>
-          <TableTh>Actions</TableTh>
-        </TableTr>
-      </THead>
       <TBody>
-        {messages.map((msg, index) => (
-          <TableTr key={msg.id}>
-            <TableTd>{index + 1}</TableTd>
-            <TableTd>{msg.name}</TableTd>
-            <TableTd>{msg.email}</TableTd>
-            <TableTd>{msg.subject}</TableTd>
+          <TableTr>
+            <TableTd>{props.okundu && (
+            <FaCheckCircle style={{ color: "green", marginLeft: "5px" }} title="Okundu" />
+          )}</TableTd>
+            <TableTd>{props.name}</TableTd>
+            <TableTd>{props.email}</TableTd>
+            <TableTd>{props.subject}</TableTd>
             <TableTd>
-              <Button
-                name="Görüntüle"
-                className="button"
-                onClick={() => handleView(msg.id)}
-                link={`/dashboard/message/${msg.id}`}
-              />
-              <Button
-                name="Sil"
-                className="button"
-                onClick={() => alert(`Mesaj ${msg.id} silindi (örnek)`)}
-              />
+              <Button name="Delete" className="button" onClick={handleDelete} />
+              <Button name="View" className="button" onClick={handleView} />
             </TableTd>
           </TableTr>
-        ))}
-      </TBody>
-    </Table>
-  );
+      </TBody> 
+  )
 }
 
 export default MessagesTable;

@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchContactById } from '../../../redux/slices/Contact';
 
 const ReadMessage = () => {
   // For now, we use dummy data. Later you can fetch from API or database.
-  const message = {
-    name: "John Doe",
-    email: "john@example.com",
-    subject: "Interested in your portfolio",
-    content: "Hi! I really liked your portfolio. Let's connect and discuss a project opportunity."
-  };
+  const { id } = useParams();
+  const dispatch = useDispatch();
 
+  const { items, status } = useSelector((state) => state.contact.contact);
+  const message = items.find((msg) => msg._id === id);
+
+  useEffect(() => {
+    if (!message) {
+      dispatch(fetchContactById(id));
+    }
+  }, [dispatch, id, message]);
+
+  if (status === "loading") return <p>Yükleniyor...</p>;
+  if (!message) return <p>Mesaj bulunamadı</p>;
+
+  
   return (
     <div className="p-6 bg-white rounded-xl shadow-md max-w-3xl mx-auto mt-10">
       <h2 className="text-2xl font-bold mb-4">📨 Message Details</h2>
@@ -24,7 +36,7 @@ const ReadMessage = () => {
       </div>
       <div className="mb-3">
         <strong>Message:</strong>
-        <p className="mt-1 text-gray-700">{message.content}</p>
+        <p className="mt-1 text-gray-700">{message.message}</p>
       </div>
     </div>
   );
